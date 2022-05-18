@@ -76,17 +76,29 @@ public class PanelPrincipal extends JPanel implements ActionListener {
             } catch (Exception e) {
                 if (((JButton) o).getText().equalsIgnoreCase("+")) {
                     suma = true;
+                    resta = false;
+                    multiplicar = false;
+                    dividir = false;
                     turno++;
                 }
                 if (((JButton) o).getText().equalsIgnoreCase("-")) {
+                    suma = false;
                     resta = true;
+                    multiplicar = false;
+                    dividir = false;
                     turno++;
                 }
                 if (((JButton) o).getText().equalsIgnoreCase("*")) {
+                    suma = false;
+                    resta = false;
                     multiplicar = true;
+                    dividir = false;
                     turno++;
                 }
                 if (((JButton) o).getText().equalsIgnoreCase("/")) {
+                    suma = false;
+                    resta = false;
+                    multiplicar = false;
                     dividir = true;
                     turno++;
                 }
@@ -95,19 +107,27 @@ public class PanelPrincipal extends JPanel implements ActionListener {
             if (((JButton) o).getText().equalsIgnoreCase("=")) {
                 if (suma) {
                     int RSuma = num1 + num2;
-                    System.out.println("Resultado:" + RSuma);
+                    System.out.println("Resultado:" + num1 + "+" + num2 + "=" + RSuma);
                 }
                 if (resta) {
                     int RResta = num1 - num2;
-                    System.out.println("Resultado:" + RResta);
+                    System.out.println("Resultado:" + num1 + "-" + num2 + "=" + RResta);
                 }
                 if (multiplicar) {
-                    int RMultiplicacion = num1 * num2;
-                    System.out.println("Resultado:" + RMultiplicacion);
+                    double RMultiplicacion = num1 * num2;
+                    System.out.println("Resultado:" + num1 + "*" + num2 + "=" + RMultiplicacion);
                 }
                 if (dividir) {
-                    int RDivision = num1 / num2;
-                    System.out.println("Resultado:" + RDivision);
+                    if (num2 == 0) {
+                        System.out.println("Ni lo sueñes...");
+                        System.out.println("No se puede dividir entre 0");
+                    } else {
+                        int RDivision = num1 / num2;
+                        double resto = num1 % num2;
+                        System.out.println("Resultado:" + num1 + "/" + num2 + "=" + RDivision);
+                        System.out.println("Resto = " + resto);
+                    }
+
                 }
 
                 limpiar();
